@@ -1,0 +1,511 @@
+{
+  "28": {
+    "inputs": {
+      "enable_vae_tiling": false,
+      "tile_x": 512,
+      "tile_y": 512,
+      "tile_stride_x": 256,
+      "tile_stride_y": 256,
+      "normalization": "default",
+      "samples": [
+        "562:392",
+        1
+      ]
+    },
+    "class_type": "WanVideoDecode",
+    "_meta": {
+      "title": "WanVideo Decode",
+      "cnr_id": "comfyui-wanvideowrapper",
+      "ver": "1.2.3"
+    }
+  },
+  "30": {
+    "inputs": {
+      "frame_rate": 16,
+      "loop_count": 0,
+      "filename_prefix": "WAN 2.2 FunCamera I2V",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 8,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "no_preview": false,
+      "images": [
+        "28",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢",
+      "cnr_id": "comfyui-videohelpersuite",
+      "ver": "a7ce59e381934733bfae03b1be029756d6ce936d"
+    }
+  },
+  "219": {
+    "inputs": {
+      "mode": "always",
+      "volume": 0.5,
+      "file": "notify.mp3",
+      "any": [
+        "30",
+        0
+      ]
+    },
+    "class_type": "PlaySound|pysssss",
+    "_meta": {
+      "title": "PlaySound 🐍",
+      "cnr_id": "comfyui-custom-scripts",
+      "ver": "1.2.5"
+    }
+  },
+  "514": {
+    "inputs": {
+      "width": [
+        "546",
+        1
+      ],
+      "height": [
+        "546",
+        2
+      ],
+      "num_frames": [
+        "523",
+        0
+      ],
+      "noise_aug_strength": 0.03,
+      "start_latent_strength": 1,
+      "end_latent_strength": 1,
+      "force_offload": true,
+      "fun_or_fl2v_model": false,
+      "tiled_vae": false,
+      "augment_empty_frames": 0,
+      "start_image": [
+        "546",
+        0
+      ]
+    },
+    "class_type": "WanVideoImageToVideoEncode",
+    "_meta": {
+      "title": "WanVideo ImageToVideo Encode",
+      "cnr_id": "ComfyUI-WanVideoWrapper",
+      "ver": "7e290c67bff1f906cdab84523018573f6c9d4d7f"
+    }
+  },
+  "521": {
+    "inputs": {
+      "image": "0 (559).jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "StartImage",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.44"
+    }
+  },
+  "523": {
+    "inputs": {
+      "Xi": 81,
+      "Xf": 81,
+      "isfloatX": 0
+    },
+    "class_type": "mxSlider",
+    "_meta": {
+      "title": "Desired Frame Count",
+      "cnr_id": "comfyui-mxtoolkit",
+      "ver": "7f7a0e584f12078a1c589645d866ae96bad0cc35"
+    }
+  },
+  "543": {
+    "inputs": {
+      "Xi": 576,
+      "Xf": 576,
+      "isfloatX": 0
+    },
+    "class_type": "mxSlider",
+    "_meta": {
+      "title": "Desired Resolution",
+      "cnr_id": "comfyui-mxtoolkit",
+      "ver": "7f7a0e584f12078a1c589645d866ae96bad0cc35"
+    }
+  },
+  "546": {
+    "inputs": {
+      "max_side_length": [
+        "543",
+        0
+      ],
+      "image": [
+        "521",
+        0
+      ]
+    },
+    "class_type": "CRT_QuantizeAndCropImage",
+    "_meta": {
+      "title": "Desired Resolution",
+      "cnr_id": "crt-nodes",
+      "ver": "1.7.1"
+    }
+  },
+  "548": {
+    "inputs": {
+      "positive_prompt": [
+        "549",
+        0
+      ],
+      "negative_prompt": "still image, slowmotion, 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走, ",
+      "force_offload": true,
+      "use_disk_cache": true,
+      "device": "gpu"
+    },
+    "class_type": "WanVideoTextEncode",
+    "_meta": {
+      "title": "WanVideo TextEncode",
+      "cnr_id": "comfyui-wanvideowrapper",
+      "ver": "1.2.3"
+    }
+  },
+  "549": {
+    "inputs": {
+      "text": ""
+    },
+    "class_type": "Textbox",
+    "_meta": {
+      "title": "Prompt",
+      "cnr_id": "ComfyUI-Chibi-Nodes",
+      "ver": "424d5fc68bd3b82fe3c491f27b0c37bb3de1d123"
+    }
+  },
+  "550": {
+    "inputs": {
+      "blocks_to_swap": 15,
+      "offload_img_emb": false,
+      "offload_txt_emb": false,
+      "use_non_blocking": true,
+      "vace_blocks_to_swap": 0,
+      "prefetch_blocks": 0,
+      "block_swap_debug": false
+    },
+    "class_type": "WanVideoBlockSwap",
+    "_meta": {
+      "title": "WanVideo Block Swap",
+      "cnr_id": "comfyui-wanvideowrapper",
+      "ver": "1.2.3"
+    }
+  },
+  "551": {
+    "inputs": {
+      "anything12": [
+        "550",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere",
+    "_meta": {
+      "title": "Anything Everywhere",
+      "cnr_id": "cg-use-everywhere",
+      "ver": "feae434a5fe8b1c369b9a2f3e8a1d3042f3afbcc"
+    }
+  },
+  "553": {
+    "inputs": {},
+    "class_type": "Anything Everywhere",
+    "_meta": {
+      "title": "Anything Everywhere",
+      "cnr_id": "cg-use-everywhere",
+      "ver": "feae434a5fe8b1c369b9a2f3e8a1d3042f3afbcc"
+    }
+  },
+  "558": {
+    "inputs": {
+      "anything12": [
+        "559:11",
+        0
+      ],
+      "anything13": [
+        "559:38",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere",
+    "_meta": {
+      "title": "Anything Everywhere",
+      "cnr_id": "cg-use-everywhere",
+      "ver": "feae434a5fe8b1c369b9a2f3e8a1d3042f3afbcc"
+    }
+  },
+  "560": {
+    "inputs": {
+      "anything26": [
+        "548",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere",
+    "_meta": {
+      "title": "Anything Everywhere",
+      "cnr_id": "cg-use-everywhere",
+      "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b"
+    }
+  },
+  "561": {
+    "inputs": {
+      "value": 0
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Int",
+      "cnr_id": "cg-use-everywhere",
+      "ver": "feae434a5fe8b1c369b9a2f3e8a1d3042f3afbcc"
+    }
+  },
+  "564": {
+    "inputs": {
+      "lora_0": "Wan_2_2_I2V_A14B_LOW_lightx2v_4step_lora_260412_rank_256_fp16.safetensors",
+      "strength_0": 1,
+      "lora_1": "none",
+      "strength_1": 1,
+      "lora_2": "none",
+      "strength_2": 1,
+      "lora_3": "none",
+      "strength_3": 1,
+      "lora_4": "none",
+      "strength_4": 1,
+      "low_mem_load": false,
+      "merge_loras": false
+    },
+    "class_type": "WanVideoLoraSelectMulti",
+    "_meta": {
+      "title": "Low Noise LoRA"
+    }
+  },
+  "565": {
+    "inputs": {
+      "lora_0": "Wan_2_2_I2V_A14B_HIGH_lightx2v_4step_lora_260412_rank_256_fp16.safetensors",
+      "strength_0": 1,
+      "lora_1": "none",
+      "strength_1": 1,
+      "lora_2": "none",
+      "strength_2": 1,
+      "lora_3": "none",
+      "strength_3": 1,
+      "lora_4": "none",
+      "strength_4": 1,
+      "low_mem_load": false,
+      "merge_loras": false
+    },
+    "class_type": "WanVideoLoraSelectMulti",
+    "_meta": {
+      "title": "High Noise LoRA"
+    }
+  },
+  "562:392": {
+    "inputs": {
+      "steps": 8,
+      "cfg": 1.0000000000000002,
+      "shift": 5,
+      "seed": [
+        "561",
+        0
+      ],
+      "force_offload": true,
+      "scheduler": "euler",
+      "riflex_freq_index": 0,
+      "denoise_strength": 1,
+      "batched_cfg": false,
+      "rope_function": "comfy",
+      "start_step": [
+        "562:491",
+        0
+      ],
+      "end_step": -1,
+      "add_noise_to_samples": false,
+      "model": [
+        "559:468",
+        0
+      ],
+      "image_embeds": [
+        "514",
+        0
+      ],
+      "samples": [
+        "562:308",
+        0
+      ]
+    },
+    "class_type": "WanVideoSampler",
+    "_meta": {
+      "title": "WanVideo Sampler",
+      "cnr_id": "comfyui-wanvideowrapper",
+      "ver": "1.2.3"
+    }
+  },
+  "562:491": {
+    "inputs": {
+      "sigma": 0.9
+    },
+    "class_type": "WanVideoSigmaToStep",
+    "_meta": {
+      "title": "WanVideo Sigma To Step"
+    }
+  },
+  "562:308": {
+    "inputs": {
+      "steps": 8,
+      "cfg": 1.0000000000000002,
+      "shift": 5,
+      "seed": [
+        "561",
+        0
+      ],
+      "force_offload": true,
+      "scheduler": "euler",
+      "riflex_freq_index": 0,
+      "denoise_strength": 1,
+      "batched_cfg": false,
+      "rope_function": "comfy",
+      "start_step": 0,
+      "end_step": [
+        "562:491",
+        0
+      ],
+      "add_noise_to_samples": false,
+      "model": [
+        "559:466",
+        0
+      ],
+      "image_embeds": [
+        "514",
+        0
+      ]
+    },
+    "class_type": "WanVideoSampler",
+    "_meta": {
+      "title": "WanVideo Sampler",
+      "cnr_id": "comfyui-wanvideowrapper",
+      "ver": "1.2.3"
+    }
+  },
+  "559:38": {
+    "inputs": {
+      "model_name": "wan_2.1_vae.safetensors",
+      "precision": "bf16",
+      "use_cpu_cache": false,
+      "verbose": false
+    },
+    "class_type": "WanVideoVAELoader",
+    "_meta": {
+      "title": "WanVideo VAE Loader",
+      "cnr_id": "comfyui-wanvideowrapper",
+      "ver": "1.2.3"
+    }
+  },
+  "559:464": {
+    "inputs": {
+      "model": [
+        "559:484",
+        0
+      ]
+    },
+    "class_type": "WanVideoSetBlockSwap",
+    "_meta": {
+      "title": "WanVideo Set BlockSwap",
+      "cnr_id": "ComfyUI-WanVideoWrapper",
+      "ver": "7e290c67bff1f906cdab84523018573f6c9d4d7f"
+    }
+  },
+  "559:467": {
+    "inputs": {
+      "model": [
+        "559:485",
+        0
+      ]
+    },
+    "class_type": "WanVideoSetBlockSwap",
+    "_meta": {
+      "title": "WanVideo Set BlockSwap",
+      "cnr_id": "ComfyUI-WanVideoWrapper",
+      "ver": "7e290c67bff1f906cdab84523018573f6c9d4d7f"
+    }
+  },
+  "559:484": {
+    "inputs": {
+      "model": "Wan2_2-I2V-A14B-HIGH_fp8_e4m3fn_scaled_KJ.safetensors",
+      "base_precision": "fp16_fast",
+      "quantization": "fp8_e4m3fn_scaled",
+      "load_device": "offload_device",
+      "attention_mode": "sdpa",
+      "rms_norm_function": "default"
+    },
+    "class_type": "WanVideoModelLoader",
+    "_meta": {
+      "title": "WanVideo Model Loader"
+    }
+  },
+  "559:485": {
+    "inputs": {
+      "model": "Wan2_2-I2V-A14B-LOW_fp8_e4m3fn_scaled_KJ.safetensors",
+      "base_precision": "fp16_fast",
+      "quantization": "fp8_e4m3fn_scaled",
+      "load_device": "offload_device",
+      "attention_mode": "sdpa",
+      "rms_norm_function": "default"
+    },
+    "class_type": "WanVideoModelLoader",
+    "_meta": {
+      "title": "WanVideo Model Loader"
+    }
+  },
+  "559:11": {
+    "inputs": {
+      "model_name": "umt5-xxl-enc-bf16.safetensors",
+      "precision": "bf16",
+      "load_device": "offload_device",
+      "quantization": "fp8_e4m3fn"
+    },
+    "class_type": "LoadWanVideoT5TextEncoder",
+    "_meta": {
+      "title": "WanVideo T5 Text Encoder Loader",
+      "cnr_id": "comfyui-wanvideowrapper",
+      "ver": "1.2.3"
+    }
+  },
+  "559:466": {
+    "inputs": {
+      "model": [
+        "559:464",
+        0
+      ],
+      "lora": [
+        "565",
+        0
+      ]
+    },
+    "class_type": "WanVideoSetLoRAs",
+    "_meta": {
+      "title": "WanVideo Set LoRAs",
+      "cnr_id": "ComfyUI-WanVideoWrapper",
+      "ver": "998a69cc0acbec503001b8b0ce0a5d5404420e1e"
+    }
+  },
+  "559:468": {
+    "inputs": {
+      "model": [
+        "559:467",
+        0
+      ],
+      "lora": [
+        "564",
+        0
+      ]
+    },
+    "class_type": "WanVideoSetLoRAs",
+    "_meta": {
+      "title": "WanVideo Set LoRAs",
+      "cnr_id": "ComfyUI-WanVideoWrapper",
+      "ver": "998a69cc0acbec503001b8b0ce0a5d5404420e1e"
+    }
+  }
+}
